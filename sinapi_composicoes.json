@@ -1,0 +1,353 @@
+{
+  "104658": {
+    "codigo": "104658",
+    "descricao": "PISO PODOTÁTIL DE ALERTA OU DIRECIONAL, DE CONCRETO, ASSENTADO SOBRE ARGAMASSA. AF_03/2024",
+    "unidade": "M2",
+    "caderno": "SINAPI-CT-ACESSIBILIDADE",
+    "macroclasse": "03.PISO.ACES.001/01",
+    "vigencia": "05/2023",
+    "atualizacao": "15/01/2026",
+    "situacao": "ATIVO",
+    "itens_caracteristicas": [
+      "- Pedreiro: profissional que executa as atividades necessárias para a instalação do piso podotátil;",
+      "- Servente: profissional que auxilia o pedreiro nas atividades necessárias para execução da atividade;",
+      "- Piso podotátil de concreto: piso de concreto com saliências indicando alerta ou direção;",
+      "-  Argamassa  colante  industrializada  para  assentamento  de  placas  cerâmicas,  do  tipo  AC  III,  preparada",
+      "- Rejunte cimentício:  material utilizado para rejuntamento."
+    ],
+    "equipamentos": [
+      "- Não se aplica."
+    ],
+    "criterios_quantificacao": [
+      "- Utilizar a área de piso podotátil efetivamente executado."
+    ],
+    "criterios_afericao": [
+      "-  Para  o  levantamento  dos  índices  de  produtividade  foram  considerados  os  operários  que  estavam"
+    ],
+    "execucao": [
+      "- Assentar as placas de piso podotátil de concreto, conforme o padrão definido no projeto."
+    ],
+    "informacoes_complementares": [
+      "- Não se aplica."
+    ]
+  },
+  "105000": {
+    "codigo": "105000",
+    "descricao": "RAMPA DE ACESSIBILIDADE PARA ACESSO A EDIFICAÇÕES COM INCLINAÇÃO DE 8,33% EM CONCRETO MOLDADO IN LOCO, COM LARGURA DE 1,20M, FCK 25MPA, NÃO ARMADA, COM JUNTA A CADA 2M COM CORTE À SECO. AF_03/2024",
+    "unidade": "M",
+    "caderno": "SINAPI-CT-ACESSIBILIDADE",
+    "macroclasse": "03.PISO.ACES.008/01",
+    "vigencia": "03/2024",
+    "atualizacao": "14/01/2026",
+    "situacao": "ATIVO",
+    "itens_caracteristicas": [
+      "- Execução de piso de concreto moldado in loco, usinado C25;",
+      "- Guarda corpo aplicado em ambos os lados da rampa de acesso;",
+      "- Lastro com material granular aplicado em camada de base;",
+      "- Piso podotátil de concreto: piso de concreto com saliências indicando alerta ou direção."
+    ],
+    "equipamentos": [
+      "- Não se aplica."
+    ],
+    "criterios_quantificacao": [
+      "- Utilizar o comprimento inclinado, em metro, de rampa construída."
+    ],
+    "criterios_afericao": [
+      "-  Para  essa  composição  não  foram  contemplados  esforços  de  aterro,  ou  seja,  o  terreno  deve  estar"
+    ],
+    "execucao": [
+      "- Aplicação da camada de material granular;",
+      "- Execução do piso de concreto;",
+      "- Instalação de guarda-corpo;",
+      "- Instalação de piso podotátil."
+    ],
+    "informacoes_complementares": [
+      "- Não se aplica."
+    ]
+  },
+  "105001": {
+    "codigo": "105001",
+    "descricao": "RAMPA DE ACESSIBILIDADE PARA ACESSO A EDIFICAÇÕES COM INCLINAÇÃO DE 8,33% EM CONCRETO MOLDADO IN LOCO, COM LARGURA DE 1,50M, FCK 25MPA, NÃO ARMADA, COM JUNTA A CADA 2M COM CORTE À SECO. AF_03/2024",
+    "unidade": "M",
+    "caderno": "SINAPI-CT-ACESSIBILIDADE",
+    "macroclasse": "03.PISO.ACES.009/01",
+    "vigencia": "03/2024",
+    "atualizacao": "13/01/2026",
+    "situacao": "ATIVO",
+    "itens_caracteristicas": [
+      "- Execução de piso de concreto moldado in loco, usinado C25;",
+      "- Guarda corpo aplicado em ambos os lados da rampa de acesso;",
+      "- Lastro com material granular aplicado em camada de base;",
+      "- Piso podotátil de concreto: piso de concreto com saliências indicando alerta ou direção."
+    ],
+    "equipamentos": [
+      "- Não se aplica."
+    ],
+    "criterios_quantificacao": [
+      "- Utilizar o comprimento inclinado, em metro, de rampa construída."
+    ],
+    "criterios_afericao": [
+      "-  Para  essa  composição  não  foram  contemplados  esforços  de  aterro,  ou  seja,  o  terreno  deve  estar"
+    ],
+    "execucao": [
+      "- Aplicação da camada de material granular;",
+      "- Execução do piso de concreto;",
+      "- Instalação de guarda-corpo;",
+      "- Instalação de piso podotátil."
+    ],
+    "informacoes_complementares": [
+      "- Não se aplica."
+    ]
+  },
+  "105002": {
+    "codigo": "105002",
+    "descricao": "",
+    "unidade": "",
+    "caderno": "SINAPI-CT-ACESSIBILIDADE",
+    "macroclasse": "03.PISO.ACES.002/01",
+    "vigencia": "03/2024",
+    "atualizacao": "10/06/2024",
+    "situacao": "ATIVO",
+    "itens_caracteristicas": [
+      "- Pedreiro: profissional que executa as atividades necessárias para a execução da rampa de acessibilidade;",
+      "- Servente: profissional que auxilia o pedreiro nas atividades necessárias para execução da atividade;",
+      "- Concreto: principal insumo utilizado para executar a rampa, conforme o projeto;",
+      "- Madeira: utilizada para fabricação do gabarito para conter o concreto;",
+      "-  Prego  de  aço  polido  com  cabeça  17  x  21  (2  x  11):  utilizado  na  fabricação  do  gabarito  para  conter  o",
+      "- Lastro de material granular (areia, brita 0, brita 1, brita 2 ou outro), espessura de 10cm;",
+      "- Piso podotátil de concreto: piso de concreto com saliências indicando alerta ou direção."
+    ],
+    "equipamentos": [
+      "- Não se aplica."
+    ],
+    "criterios_quantificacao": [
+      "- Utilizar a quantidade, em unidade, de rampas executadas."
+    ],
+    "criterios_afericao": [
+      "-  Para  o  levantamento  dos  índices  de  produtividade  foram  considerados  os  operários  que  estavam"
+    ],
+    "execucao": [
+      "- Marcação do desenho da rampa;",
+      "- Montagem do gabarito;",
+      "- Limpeza da base;",
+      "- Posicionamento do gabarito;",
+      "- Execução da camada de brita;",
+      "- Preparação, lançamento, espalhamento e desempeno do concreto;",
+      "- Remoção das estacas de posicionamento do gabarito;",
+      "- Instalação do piso podotátil."
+    ],
+    "informacoes_complementares": [
+      "- Não se aplica."
+    ]
+  },
+  "105003": {
+    "codigo": "105003",
+    "descricao": "",
+    "unidade": "",
+    "caderno": "SINAPI-CT-ACESSIBILIDADE",
+    "macroclasse": "03.PISO.ACES.003/01",
+    "vigencia": "03/2024",
+    "atualizacao": "10/06/2024",
+    "situacao": "ATIVO",
+    "itens_caracteristicas": [
+      "- Pedreiro: profissional que executa as atividades necessárias para a execução da rampa de acessibilidade;",
+      "- Servente: profissional que auxilia o pedreiro nas atividades necessárias para execução da atividade;",
+      "- Concreto: principal insumo utilizado para executar a rampa, conforme o projeto;",
+      "- Madeira: utilizada para fabricação do gabarito para conter o concreto;",
+      "-  Prego  de  aço  polido  com  cabeça  17  x  21  (2  x  11):  utilizado  na  fabricação  do  gabarito  para  conter  o",
+      "- Lastro de material granular (areia, brita 0, brita 1, brita 2 ou outro), espessura de 10cm;",
+      "- Piso podotátil de concreto: piso de concreto com saliências indicando alerta ou direção;",
+      "- Martelete pneumático manual: equipamento utilizado para quebra de calçada existente;",
+      "- Compressor de ar rebocável: equipamento utilizado para permitir o funcionamento do martelete."
+    ],
+    "equipamentos": [
+      "- Martelete ou rompedor pneumático manual, 28 kg, com silenciador;",
+      "- Compressor de ar rebocável, vazão 89 PCM, pressão efetiva de trabalho 102 PSI, motor diesel, potência"
+    ],
+    "criterios_quantificacao": [
+      "- Utilizar a quantidade, em unidade, de rampas executadas."
+    ],
+    "criterios_afericao": [
+      "-  Para  o  levantamento  dos  índices  de  produtividade  foram  considerados  os  operários  que  estavam"
+    ],
+    "execucao": [
+      "- Marcação do desenho da rampa;",
+      "- Quebra da calçada existente com o martelete;",
+      "- Remoção do entulho gerado;",
+      "- Montagem do gabarito;",
+      "- Limpeza da base;",
+      "- Posicionamento do gabarito;",
+      "- Execução da camada de brita;",
+      "- Preparo, lançamento, espalhamento e desempeno do concreto;",
+      "- Remoção das estacas de posicionamento do gabarito;",
+      "- Instalação do piso podotátil."
+    ],
+    "informacoes_complementares": [
+      "- Não se aplica."
+    ]
+  },
+  "105004": {
+    "codigo": "105004",
+    "descricao": "",
+    "unidade": "",
+    "caderno": "SINAPI-CT-ACESSIBILIDADE",
+    "macroclasse": "03.PISO.ACES.004/01",
+    "vigencia": "03/2024",
+    "atualizacao": "10/06/2024",
+    "situacao": "ATIVO",
+    "itens_caracteristicas": [
+      "- Pedreiro: profissional que executa as atividades necessárias para a execução da rampa de acessibilidade;",
+      "- Servente: profissional que auxilia o pedreiro nas atividades necessárias para execução da atividade;",
+      "- Concreto: principal insumo utilizado para executar a rampa, conforme o projeto;",
+      "- Madeira: utilizada para fabricação do gabarito para conter o concreto;",
+      "-  Prego  de  aço  polido  com  cabeça  17  x  21  (2  x  11):  utilizado  na  fabricação  do  gabarito  para  conter  o",
+      "- Lastro de material granular (areia, brita 0, brita 1, brita 2 ou outro), espessura de 10cm;",
+      "- Piso podotátil de concreto: piso de concreto com saliências indicando alerta ou direção."
+    ],
+    "equipamentos": [
+      "- Não se aplica."
+    ],
+    "criterios_quantificacao": [
+      "- Utilizar o comprimento inclinado, em metros quadrados, de rampa construída."
+    ],
+    "criterios_afericao": [
+      "-  Para  o  levantamento  dos  índices  de  produtividade  foram  considerados  os  operários  que  estavam"
+    ],
+    "execucao": [
+      "- Marcação do desenho da rampa;",
+      "- Montagem do gabarito;",
+      "- Limpeza da base;",
+      "- Posicionamento do gabarito;",
+      "- Execução da camada de brita;",
+      "- Preparação, lançamento, espalhamento e desempeno do concreto;",
+      "- Remoção das estacas de posicionamento do gabarito;",
+      "- Instalação do piso podotátil."
+    ],
+    "informacoes_complementares": [
+      "- Não se aplica."
+    ]
+  },
+  "104999": {
+    "codigo": "104999",
+    "descricao": "",
+    "unidade": "",
+    "caderno": "SINAPI-CT-ACESSIBILIDADE",
+    "macroclasse": "03.PISO.ACES.007/01",
+    "vigencia": "03/2024",
+    "atualizacao": "10/06/2024",
+    "situacao": "SEM",
+    "itens_caracteristicas": [
+      "-  Pedreiro:  profissional  que  executa  as  atividades  necessárias  para  a  instalação  da  rampa  de",
+      "- Servente: profissional que auxilia o pedreiro nas atividades necessárias para execução da atividade;",
+      "-  Peças  pré  moldadas:  placas  de  concreto  pré  fabricadas,  utilizadas  para  execução  de  rampas  de",
+      "-  Argamassa  1:6:  argamassa  semisseca  utilizada  para  compor  a  camada  de  assentamento,  responsável",
+      "- Argamassa 1:1:6: argamassa plástica utilizada para o rejuntamento das placas de concreto.;",
+      "- Martelete pneumático manual: equipamento utilizado para quebra de calçada existente;",
+      "- Compressor de ar rebocável: equipamento utilizado para permitir o funcionamento do martelete."
+    ],
+    "equipamentos": [
+      "- Martelete ou rompedor pneumático manual, 28 kg, com silenciador;",
+      "- Compressor de ar rebocável, vazão 89 PCM, pressão efetiva de trabalho 102 PSI, motor diesel, potência"
+    ],
+    "criterios_quantificacao": [
+      "- Utilizar a quantidade, em unidade, de rampas instaladas."
+    ],
+    "criterios_afericao": [
+      "-  Para  o  levantamento  dos  índices  de  produtividade  foram  considerados  os  operários  que  estavam"
+    ],
+    "execucao": [
+      "- Marcação do desenho da rampa;",
+      "- Quebra da calçada existente com o martelete;",
+      "- Remoção do entulho gerado;",
+      "- Preparo da base;",
+      "- Aplicação da argamassa de assentamento 1:6;",
+      "- Posicionamento das peças pré moldadas;",
+      "- Aplicação da argamassa de rejuntamento 1:1:6."
+    ],
+    "informacoes_complementares": [
+      "- Não se aplica."
+    ]
+  },
+  "105005": {
+    "codigo": "105005",
+    "descricao": "",
+    "unidade": "",
+    "caderno": "SINAPI-CT-ACESSIBILIDADE",
+    "macroclasse": "03.PISO.ACES.005/01",
+    "vigencia": "03/2024",
+    "atualizacao": "10/06/2024",
+    "situacao": "ATIVO",
+    "itens_caracteristicas": [
+      "- Pedreiro: profissional que executa as atividades necessárias para a execução da rampa de acessibilidade;",
+      "- Servente: profissional que auxilia o pedreiro nas atividades necessárias para execução da atividade;",
+      "- Concreto: principal insumo utilizado para executar a rampa, conforme o projeto;",
+      "- Madeira: utilizada para fabricação do gabarito para conter o concreto;",
+      "-  Prego  de  aço  polido  com  cabeça  17  x  21  (2  x  11):  utilizado  na  fabricação  do  gabarito  para  conter  o",
+      "- Lastro de material granular (areia, brita 0, brita 1, brita 2 ou outro), espessura de 10cm;",
+      "- Piso podotátil de concreto: piso de concreto com saliências indicando alerta ou direção;",
+      "- Martelete pneumático manual: equipamento utilizado para quebra de calçada existente;",
+      "- Compressor de ar rebocável: equipamento utilizado para permitir o funcionamento do martelete."
+    ],
+    "equipamentos": [
+      "- Martelete ou rompedor pneumático manual, 28 kg, com silenciador;",
+      "- Compressor de ar rebocável, vazão 89 PCM, pressão efetiva de trabalho 102 PSI, motor diesel, potência"
+    ],
+    "criterios_quantificacao": [
+      "- Utilizar o comprimento inclinado, em metros quadrados, de rampa construída."
+    ],
+    "criterios_afericao": [
+      "-  Para  o  levantamento  dos  índices  de  produtividade  foram  considerados  os  operários  que  estavam"
+    ],
+    "execucao": [
+      "- Marcação do desenho da rampa;",
+      "- Quebra da calçada existente com o martelete;",
+      "- Remoção do entulho gerado;",
+      "- Montagem do gabarito;",
+      "- Limpeza da base;",
+      "- Posicionamento do gabarito;",
+      "- Execução da camada de brita;",
+      "- Preparo, lançamento, espalhamento e desempeno do concreto;",
+      "- Remoção das estacas de posicionamento do gabarito;",
+      "- Instalação do piso podotátil."
+    ],
+    "informacoes_complementares": [
+      "- Não se aplica."
+    ]
+  },
+  "105006": {
+    "codigo": "105006",
+    "descricao": "",
+    "unidade": "",
+    "caderno": "SINAPI-CT-ACESSIBILIDADE",
+    "macroclasse": "03.PISO.ACES.006/01",
+    "vigencia": "03/2024",
+    "atualizacao": "10/06/2024",
+    "situacao": "SEM",
+    "itens_caracteristicas": [
+      "-  Pedreiro:  profissional  que  executa  as  atividades  necessárias  para  a  instalação  da  rampa  de",
+      "- Servente: profissional que auxilia o pedreiro nas atividades necessárias para execução da atividade;",
+      "-  Peças  pré  moldadas:  placas  de  concreto  pré  fabricadas,  utilizadas  para  execução  de  rampas  de",
+      "-  Argamassa  1:6:  argamassa  semisseca  utilizada  para  compor  a  camada  de  assentamento,  responsável",
+      "- Argamassa 1:1:6: argamassa plástica utilizada para o rejuntamento das placas de concreto."
+    ],
+    "equipamentos": [
+      "- Não se aplica."
+    ],
+    "criterios_quantificacao": [
+      "- Utilizar a quantidade, em unidade, de rampas executadas."
+    ],
+    "criterios_afericao": [
+      "-  Para  o  levantamento  dos  índices  de  produtividade  foram  considerados  os  operários  que  estavam"
+    ],
+    "execucao": [
+      "- Marcação do desenho da rampa;",
+      "- Preparo da base;",
+      "- Aplicação da argamassa de assentamento 1:6;",
+      "- Posicionamento das peças pré moldadas;",
+      "- Aplicação da argamassa de rejuntamento 1:1:6."
+    ],
+    "informacoes_complementares": [
+      "- Não se aplica."
+    ]
+  }
+}
