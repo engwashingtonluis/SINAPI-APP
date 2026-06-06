@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SINAPI — Gerador de Especificações</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --azul: #005CA9; --azul-escuro: #003D72; --amarelo: #F7A800;
+  --cinza-bg: #F2F4F7; --cinza-borda: #D5DAE2; --cinza-texto: #6B7280;
+  --texto: #1A1F2E; --branco: #ffffff; --verde: #0A7C42; --vermelho: #C0392B;
+}
+body { font-family: 'Barlow', sans-serif; background: var(--cinza-bg); color: var(--texto); min-height: 100vh; }
+header { background: var(--azul-escuro); padding: 0 2rem; display: flex; align-items: center; gap: 1.5rem; height: 64px; border-bottom: 3px solid var(--amarelo); }
+.logo { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--amarelo); letter-spacing: 2px; }
+.hdiv { width: 1px; height: 28px; background: rgba(255,255,255,0.2); }
+.htitle { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 600; color: rgba(255,255,255,0.85); letter-spacing: 1px; text-transform: uppercase; }
+main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+.card { background: var(--branco); border: 1px solid var(--cinza-borda); border-radius: 12px; padding: 1.75rem 2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cinza-texto); margin-bottom: 0.6rem; display: block; }
+.upload-zone { border: 2px dashed var(--cinza-borda); border-radius: 10px; padding: 2.5rem 2rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; position: relative; }
+.upload-zone:hover, .upload-zone.drag { border-color: var(--azul); background: #F0F6FF; }
+.upload-zone.ok { border-color: var(--verde); background: #F0FBF4; border-style: solid; }
+.upload-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.upload-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.upload-text { font-size: 1rem; color: var(--cinza-texto); }
+.upload-text strong { color: var(--azul); }
+.upload-ok { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--verde); }
+.preview-wrap { overflow-x: auto; margin-top: 1.25rem; display: none; }
+.ptable { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.ptable th { background: var(--azul-escuro); color: var(--branco); font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 8px 12px; text-align: left; }
+.ptable td { padding: 7px 12px; border-bottom: 1px solid var(--cinza-borda); }
+.ptable tr:last-child td { border-bottom: none; }
+.ptable tr:nth-child(even) td { background: var(--cinza-bg); }
+.bok { display:inline-block; background:#D1FAE5; color:#065F46; font-size:0.7rem; font-weight:700; padding:2px 7px; border-radius:4px; font-family:'Barlow Condensed',sans-serif; }
+.bnao { display:inline-block; background:#FEE2E2; color:#991B1B; font-size:0.7rem; font-weight:700; padding:2px 7px; border-radius:4px; font-family:'Barlow Condensed',sans-serif; }
+.info-row { display:flex; gap:1rem; margin-top:1rem; flex-wrap:wrap; }
+.ibadge { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; font-weight:600; padding:5px 14px; border-radius:6px; }
+.itotal { background:#EBF2FA; color:var(--azul-escuro); }
+.ifound { background:#D1FAE5; color:#065F46; }
+.imiss  { background:#FEE2E2; color:#991B1B; }
+.btn-row { display:flex; gap:0.75rem; margin-top:1.5rem; flex-wrap:wrap; }
+.btn { font-family:'Barlow Condensed',sans-serif; font-size:1rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; border:none; border-radius:8px; padding:0.7rem 1.75rem; cursor:pointer; transition:background 0.15s, transform 0.1s; display:flex; align-items:center; gap:0.5rem; }
+.btn:active { transform:scale(0.97); }
+.btn-word { background:#1F5490; color:var(--branco); }
+.btn-word:hover { background:#163A6A; }
+.btn-word:disabled { background:var(--cinza-borda); color:var(--cinza-texto); cursor:not-allowed; transform:none; }
+.btn-reset { background:transparent; color:var(--cinza-texto); border:1px solid var(--cinza-borda); }
+.btn-reset:hover { border-color:var(--azul); color:var(--azul); }
+.msg { display:none; padding:0.85rem 1.1rem; border-radius:8px; font-size:0.93rem; margin-top:1rem; }
+.merro { background:#FEF2F2; border:1px solid #FECACA; border-left:4px solid var(--vermelho); color:var(--vermelho); }
+.mok   { background:#F0FBF4; border:1px solid #6EE7B7; border-left:4px solid var(--verde); color:#065F46; }
+.spinner { display:inline-block; width:16px; height:16px; border:2px solid rgba(255,255,255,0.3); border-top-color:white; border-radius:50%; animation:spin 0.7s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">CAIXA</div>
+  <div class="hdiv"></div>
+  <div class="htitle">SINAPI — Gerador de Especificações Técnicas</div>
+</header>
+<main>
+  <div class="card">
+    <span class="label">Passo 1 — Base de dados SINAPI (.json)</span>
+    <div class="upload-zone" id="zone-json">
+      <input type="file" accept=".json" id="input-json" onchange="carregarJSON(this)">
+      <div class="upload-icon">📦</div>
+      <div class="upload-text">Clique ou arraste o arquivo <strong>sinapi_composicoes.json</strong></div>
+    </div>
+    <div class="msg merro" id="erro-json"></div>
+  </div>
+  <div class="card">
+    <span class="label">Passo 2 — Planilha de composições (.xlsx)</span>
+    <div class="upload-zone" id="zone-xlsx">
+      <input type="file" accept=".xlsx,.xls" id="input-xlsx" onchange="carregarPlanilha(this)">
+      <div class="upload-icon">📊</div>
+      <div class="upload-text">Clique ou arraste a planilha Excel<br><small style="color:#9CA3AF">A=Item · B=Código · C=Descrição · D=Quantidade · E=Unidade · Dados a partir da linha 3</small></div>
+    </div>
+    <div class="preview-wrap" id="preview-wrap">
+      <div class="info-row" id="info-row"></div><br>
+      <table class="ptable">
+        <thead><tr><th>Item</th><th>Código</th><th>Descrição</th><th>Qtd</th><th>Unid</th><th>Status</th></tr></thead>
+        <tbody id="preview-body"></tbody>
+      </table>
+    </div>
+    <div class="msg merro" id="erro-xlsx"></div>
+  </div>
+  <div class="card">
+    <span class="label">Passo 3 — Gerar documento</span>
+    <div class="btn-row">
+      <button class="btn btn-word" id="btn-word" onclick="gerarWord()" disabled>📄 Baixar Word (.docx)</button>
+      <button class="btn btn-reset" onclick="location.reload()">Recomeçar</button>
+    </div>
+    <div class="msg" id="msg-gerar"></div>
+  </div>
+</main>
+<script>
+let db = null, itens = [];
+
+function carregarJSON(input) {
+  const file = input.files[0]; if (!file) return;
+  const r = new FileReader();
+  r.onload = e => {
+    try {
+      db = JSON.parse(e.target.result);
+      const zone = document.getElementById('zone-json');
+      zone.innerHTML = `<div class="upload-ok">✓ Base carregada — ${Object.keys(db).length} composições</div>`;
+      zone.classList.add('ok');
+      setErro('erro-json',''); verificarPronto();
+    } catch { setErro('erro-json','Arquivo JSON inválido.'); }
+  };
+  r.readAsText(file,'utf-8');
+}
+
+function carregarPlanilha(input) {
+  const file = input.files[0]; if (!file) return;
+  const r = new FileReader();
+  r.onload = e => {
+    try {
+      const wb = XLSX.read(e.target.result, {type:'array'});
+      const ws = wb.Sheets[wb.SheetNames[0]];
+      const dados = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
+      itens = [];
+      for (let i = 2; i < dados.length; i++) {
+        const row = dados[i];
+        const codigo = String(row[1]||'').trim();
+        if (!codigo) continue;
+        itens.push({ item: String(row[0]||'').trim(), codigo, descricao: String(row[2]||'').trim(), quantidade: String(row[4]||'').trim(), unidade: String(row[3]||'').trim() });
+      }
+      if (!itens.length) { setErro('erro-xlsx','Nenhum item encontrado. Dados devem começar na linha 3.'); return; }
+      setErro('erro-xlsx',''); renderPreview(); verificarPronto();
+      const zone = document.getElementById('zone-xlsx');
+      zone.querySelector('.upload-text').innerHTML = `<strong>${file.name}</strong> — ${itens.length} itens`;
+      zone.classList.add('ok');
+    } catch(err) { setErro('erro-xlsx','Erro: ' + err.message); }
+  };
+  r.readAsArrayBuffer(file);
+}
+
+function renderPreview() {
+  if (!db) return;
+  const tbody = document.getElementById('preview-body');
+  tbody.innerHTML = '';
+  let enc=0, nenc=0;
+  itens.forEach(it => {
+    const ok = !!db[it.codigo];
+    ok ? enc++ : nenc++;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${it.item}</td><td><b>${it.codigo}</b></td><td style="max-width:260px">${it.descricao}</td><td>${it.quantidade}</td><td>${it.unidade}</td><td>${ok?'<span class="bok">ENCONTRADO</span>':'<span class="bnao">NÃO ENCONTRADO</span>'}</td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('info-row').innerHTML = `<span class="ibadge itotal">Total: ${itens.length}</span><span class="ibadge ifound">Encontrados: ${enc}</span>${nenc?`<span class="ibadge imiss">Não encontrados: ${nenc}</span>`:''}`;
+  document.getElementById('preview-wrap').style.display = 'block';
+}
+
+function verificarPronto() {
+  if (db && itens.length) { renderPreview(); document.getElementById('btn-word').disabled = false; }
+}
+
+// ── GERADOR DOCX VIA XML + JSZIP ─────────────────────────────────
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function parNeg(txt) {
+  return `<w:p><w:pPr><w:spacing w:before="160" w:after="80"/></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t xml:space="preserve">${esc(txt)}</w:t></w:r></w:p>`;
+}
+
+function parNorm(txt) {
+  return `<w:p><w:pPr><w:numPr><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr><w:spacing w:before="40" w:after="40"/></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t xml:space="preserve">${esc(txt)}</w:t></w:r></w:p>`;
+}
+
+function parVazio() {
+  return `<w:p><w:pPr><w:spacing w:before="60" w:after="60"/></w:pPr><w:r><w:t> </w:t></w:r></w:p>`;
+}
+
+function parSep() {
+  return `<w:p><w:pPr><w:spacing w:before="120" w:after="120"/><w:pBdr><w:bottom w:val="single" w:sz="4" w:space="1" w:color="CCCCCC"/></w:pBdr></w:pPr><w:r><w:t></w:t></w:r></w:p>`;
+}
+
+function limpar(t) { return String(t).replace(/^-\s*/,'').trim(); }
+function filtrar(l) { return (l||[]).filter(i => i && !String(i).toLowerCase().includes('não se aplica')); }
+
+async function gerarWord() {
+  const btn = document.getElementById('btn-word');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Gerando...';
+  setMsg('msg-gerar','','');
+
+  try {
+    let body = '';
+    const naoEnc = [];
+
+    itens.forEach((item, idx) => {
+      const comp = db[item.codigo];
+      const titulo = `${item.item} - ${item.codigo} - ${item.descricao}`;
+      body += parNeg(titulo);
+
+      if (!comp) {
+        naoEnc.push(`${item.item} - ${item.codigo} - ${item.descricao}`);
+        body += parNeg('ITENS E SUAS CARACTERÍSTICAS');
+        body += parVazio();
+        body += parNeg('CRITÉRIOS PARA QUANTIFICAÇÃO DOS SERVIÇOS');
+        body += parVazio();
+        body += parNeg('EXECUÇÃO');
+        body += parVazio();
+      } else {
+        body += parNeg('ITENS E SUAS CARACTERÍSTICAS');
+        filtrar(comp.itens_caracteristicas).forEach(i => body += parNorm(limpar(i)));
+        body += parNeg('CRITÉRIOS PARA QUANTIFICAÇÃO DOS SERVIÇOS');
+        filtrar(comp.criterios_quantificacao).forEach(i => body += parNorm(limpar(i)));
+        body += parNeg('EXECUÇÃO');
+        filtrar(comp.execucao).forEach(i => body += parNorm(limpar(i)));
+      }
+
+      body += parNeg('QUANTIDADE');
+      body += parNorm(item.quantidade ? `${item.quantidade}${item.unidade?' '+item.unidade:''}` : '');
+      body += parSep();
+    });
+
+    if (naoEnc.length) {
+      body += parNeg('ITENS NÃO ENCONTRADOS NO SINAPI');
+      naoEnc.forEach(t => body += parNorm(t));
+    }
+
+    const docXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas"
+  xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+  xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+<w:body>
+${body}
+<w:sectPr>
+  <w:pgSz w:w="11906" w:h="16838"/>
+  <w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440"/>
+</w:sectPr>
+</w:body>
+</w:document>`;
+
+    const numberingXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:numbering xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:abstractNum w:abstractNumId="0">
+    <w:lvl w:ilvl="0">
+      <w:start w:val="1"/>
+      <w:numFmt w:val="bullet"/>
+      <w:lvlText w:val="&#x2022;"/>
+      <w:lvlJc w:val="left"/>
+      <w:pPr><w:ind w:left="440" w:hanging="220"/></w:pPr>
+      <w:rPr><w:sz w:val="22"/></w:rPr>
+    </w:lvl>
+  </w:abstractNum>
+  <w:num w:numId="1"><w:abstractNumId w:val="0"/></w:num>
+</w:numbering>`;
+
+    const relsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
+  <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/numbering" Target="numbering.xml"/>
+</Relationships>`;
+
+    const stylesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:docDefaults>
+    <w:rPrDefault><w:rPr>
+      <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+      <w:sz w:val="22"/><w:szCs w:val="22"/>
+    </w:rPr></w:rPrDefault>
+  </w:docDefaults>
+</w:styles>`;
+
+    const appRelsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>`;
+
+    const contentTypesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+  <Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>
+  <Override PartName="/word/numbering.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml"/>
+</Types>`;
+
+    const zip = new JSZip();
+    zip.file('[Content_Types].xml', contentTypesXml);
+    zip.file('_rels/.rels', appRelsXml);
+    zip.file('word/document.xml', docXml);
+    zip.file('word/styles.xml', stylesXml);
+    zip.file('word/numbering.xml', numberingXml);
+    zip.file('word/_rels/document.xml.rels', relsXml);
+
+    const blob = await zip.generateAsync({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = 'especificacoes_sinapi.docx'; a.click();
+    URL.revokeObjectURL(url);
+    setMsg('msg-gerar', `✓ Documento gerado com ${itens.length} composições!`, 'ok');
+  } catch(err) {
+    setMsg('msg-gerar', 'Erro ao gerar: ' + err.message, 'erro');
+    console.error(err);
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '📄 Baixar Word (.docx)';
+}
+
+function setErro(id, msg) { const el = document.getElementById(id); el.textContent = msg; el.style.display = msg?'block':'none'; }
+function setMsg(id, msg, tipo) { const el = document.getElementById(id); el.textContent = msg; el.className = 'msg '+(tipo==='ok'?'mok':tipo==='erro'?'merro':''); el.style.display = msg?'block':'none'; }
+
+['zone-json','zone-xlsx'].forEach(id => {
+  const zone = document.getElementById(id);
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault(); zone.classList.remove('drag');
+    const file = e.dataTransfer.files[0]; if (!file) return;
+    const inp = document.getElementById(id==='zone-json'?'input-json':'input-xlsx');
+    const dt = new DataTransfer(); dt.items.add(file); inp.files = dt.files;
+    id==='zone-json' ? carregarJSON(inp) : carregarPlanilha(inp);
+  });
+});
+</script>
+</body>
+</html>
